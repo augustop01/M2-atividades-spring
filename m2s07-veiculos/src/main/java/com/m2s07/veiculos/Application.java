@@ -1,5 +1,6 @@
 package com.m2s07.veiculos;
 
+import com.m2s07.veiculos.models.Multa;
 import com.m2s07.veiculos.models.TipoVeiculo;
 import com.m2s07.veiculos.models.Veiculo;
 import com.m2s07.veiculos.repository.MultaRepository;
@@ -21,5 +22,13 @@ public class Application {
         Veiculo veiculo2 = new Veiculo("BCA-4321", TipoVeiculo.ONIBUS, "Enterprise", 1960, "prata");
         veiculoRepository.save(veiculo1);
         veiculoRepository.save(veiculo2);
+
+        Multa multa1 = new Multa("Farol apagado", "Gothan City", 250F, veiculo1);
+        Multa multa2 = new Multa("Insulfilm", "Gothan City", 100F, veiculo1);
+        Multa multa3 = new Multa("Excesso de velocidade", "Hiper-espaço", 400F, veiculo2);
+        multaRepository.save(multa1);
+        multaRepository.save(multa2);
+        multaRepository.save(multa3);
+
     }
 }
