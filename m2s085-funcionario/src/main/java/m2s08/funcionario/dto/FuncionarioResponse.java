@@ -1,15 +1,21 @@
 package m2s08.funcionario.dto;
 
+import m2s08.funcionario.models.Funcionario;
 import m2s08.funcionario.models.Registro;
+import m2s08.funcionario.repository.FuncionarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class FuncionarioResponse {
+
+    FuncionarioRepository funcionarioRepository;
     private Integer id;
     private String nome;
     private String cargo;
     private Float salario;
     private List<Registro> registros;
+
 
     public Integer getId() {
         return id;
@@ -43,22 +49,17 @@ public class FuncionarioResponse {
         this.salario = salario;
     }
 
-    public List<Registro> getRegistros() {
-        return registros;
-    }
-
-    public void setRegistros(List<Registro> registros) {
-        this.registros = registros;
-    }
-
     public FuncionarioResponse(){}
 
-    public FuncionarioResponse(Integer id, String nome, String cargo, Float salario, List<Registro> registros) {
-        this.id = id;
+    public FuncionarioResponse(String nome, String cargo, Float salario) {
         this.nome = nome;
         this.cargo = cargo;
         this.salario = salario;
-        this.registros = registros;
     }
-    
+
+    public FuncionarioResponse(Funcionario funcionario) {
+        this.nome = funcionario.getNome();
+        this.cargo = funcionario.getCargo();
+        this.salario = funcionario.getSalario();
+    }
 }
