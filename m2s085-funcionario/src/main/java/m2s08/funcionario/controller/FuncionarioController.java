@@ -28,7 +28,7 @@ public class FuncionarioController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<FuncionarioResponse>> listar(@PageableDefault(size = 12, sort = "nome")Pageable pageable){
+    public ResponseEntity<Page<FuncionarioResponse>> listar(@PageableDefault(size = 12, sort = "id")Pageable pageable){
         Page<FuncionarioResponse> responses = this.funcionarioService.listarTodos(pageable);
         return ResponseEntity.ok(responses);
     }
