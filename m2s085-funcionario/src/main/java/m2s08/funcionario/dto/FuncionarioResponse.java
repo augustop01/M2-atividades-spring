@@ -8,13 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class FuncionarioResponse {
-
-    FuncionarioRepository funcionarioRepository;
     private Integer id;
     private String nome;
     private String cargo;
     private Float salario;
-    private List<Registro> registros;
+    private List<RegistroResponse> registros;
 
 
     public Integer getId() {
@@ -58,8 +56,10 @@ public class FuncionarioResponse {
     }
 
     public FuncionarioResponse(Funcionario funcionario) {
+        this.id = funcionario.getId();
         this.nome = funcionario.getNome();
         this.cargo = funcionario.getCargo();
         this.salario = funcionario.getSalario();
+        this.registros = funcionario.getRegistrosDTO();
     }
 }

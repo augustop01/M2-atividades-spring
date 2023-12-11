@@ -24,4 +24,8 @@ public class FuncionarioService {
     public Page<FuncionarioResponse> listarTodos(Pageable pageable){
         return this.funcionarioRepository.findAll(pageable).map(FuncionarioResponse::new);
     }
+
+    public FuncionarioResponse listarFuncionario(Integer id){
+        return this.funcionarioRepository.findById(id).map(FuncionarioResponse::new).orElseThrow(() -> new IllegalArgumentException("Nenhum funcionário com o id '" + id + "' foi encontrado."));
+    }
 }

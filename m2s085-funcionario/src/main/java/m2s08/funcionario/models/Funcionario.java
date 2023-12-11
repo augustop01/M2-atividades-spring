@@ -2,6 +2,7 @@ package m2s08.funcionario.models;
 
 import jakarta.persistence.*;
 import m2s08.funcionario.dto.FuncionarioRequest;
+import m2s08.funcionario.dto.RegistroResponse;
 
 import java.util.List;
 
@@ -69,6 +70,10 @@ public class Funcionario {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<RegistroResponse> getRegistrosDTO(){
+        return this.registros.stream().map(RegistroResponse::new).toList();
     }
 
     @Override

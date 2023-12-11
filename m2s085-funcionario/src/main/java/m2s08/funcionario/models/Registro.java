@@ -2,6 +2,8 @@ package m2s08.funcionario.models;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "REGISTROS")
 public class Registro {
@@ -9,7 +11,7 @@ public class Registro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String idFuncionario;
-    private String horaDeRegistro;
+
     @ManyToOne
     @JoinColumn(name = "registros", nullable = false, referencedColumnName = "id")
     private Funcionario funcionario;
@@ -17,9 +19,8 @@ public class Registro {
 
     public Registro(){}
 
-    public Registro(String idFuncionario, String horaDeRegistro) {
+    public Registro(String idFuncionario) {
         this.idFuncionario = idFuncionario;
-        this.horaDeRegistro = horaDeRegistro;
     }
 
     public String getIdFuncionario() {
@@ -28,14 +29,6 @@ public class Registro {
 
     public void setIdFuncionario(String idFuncionario) {
         this.idFuncionario = idFuncionario;
-    }
-
-    public String getHoraDeRegistro() {
-        return horaDeRegistro;
-    }
-
-    public void setHoraDeRegistro(String horaDeRegistro) {
-        this.horaDeRegistro = horaDeRegistro;
     }
 
     public Funcionario getFuncionario() {
@@ -59,7 +52,6 @@ public class Registro {
         return "Registro{" +
                 "id=" + id + '\''+
                 "idFuncionario='" + idFuncionario + '\'' +
-                ", horaDeRegistro='" + horaDeRegistro + '\'' +
                 ", funcionario=" + funcionario +
                 '}';
     }

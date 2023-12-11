@@ -32,4 +32,11 @@ public class FuncionarioController {
         Page<FuncionarioResponse> responses = this.funcionarioService.listarTodos(pageable);
         return ResponseEntity.ok(responses);
     }
+
+    @GetMapping("/{id}")
+        public ResponseEntity<FuncionarioResponse> listarPorId(@PathVariable("id") Integer id){
+        FuncionarioResponse result = this.funcionarioService.listarFuncionario(id);
+        return ResponseEntity.ok(result);
+    }
+
 }
