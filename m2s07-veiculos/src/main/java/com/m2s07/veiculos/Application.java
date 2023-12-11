@@ -30,5 +30,7 @@ public class Application {
         multaRepository.save(multa2);
         multaRepository.save(multa3);
 
+        multa3.setValor(380F);
+        multaRepository.save(multa3);
     }
 }

@@ -2,8 +2,10 @@ package com.m2s07.veiculos.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @Entity
 @Table(name = "MULTAS")
 @NoArgsConstructor
