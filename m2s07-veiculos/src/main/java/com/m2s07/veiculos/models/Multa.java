@@ -10,8 +10,9 @@ import lombok.NoArgsConstructor;
 @Table(name = "MULTAS")
 @NoArgsConstructor
 public class Multa {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String local;
@@ -23,6 +24,16 @@ public class Multa {
     @ManyToOne
     @JoinColumn(name = "PLACA", referencedColumnName = "PLACA")
     private Veiculo veiculo;
+
+    @Override
+    public String toString() {
+        return "Multa{" +
+                "id=" + id +
+                ", local='" + local + '\'' +
+                ", motivo='" + motivo + '\'' +
+                ", valor=" + valor +
+                '}';
+    }
 
     public Multa(String local, String motivo, Float valor, Veiculo veiculo) {
         this.local = local;

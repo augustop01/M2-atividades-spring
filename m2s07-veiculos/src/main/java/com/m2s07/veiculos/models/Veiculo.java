@@ -1,11 +1,10 @@
 package com.m2s07.veiculos.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 import java.util.List;
-
+@Data
 @Entity
 @Table(name = "VEICULOS")
 public class Veiculo {
@@ -21,7 +20,7 @@ public class Veiculo {
 
     private String cor;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "veiculo")
     private List<Multa> multas;
 
     public Veiculo(){
@@ -34,5 +33,17 @@ public class Veiculo {
         this.nome = nome;
         this.anoFabricacao = anoFabricacao;
         this.cor = cor;
+    }
+
+    @Override
+    public String toString() {
+        return "Veiculo{" +
+                "placa='" + placa + '\'' +
+                ", tipoVeiculo=" + tipoVeiculo +
+                ", nome='" + nome + '\'' +
+                ", anoFabricacao=" + anoFabricacao +
+                ", cor='" + cor + '\'' +
+                ", multas=" + multas +
+                '}';
     }
 }
